@@ -1,0 +1,20 @@
+# ===== Build artifacts =====
+*.o
+*.out
+*.exe
+csim
+test-csim
+
+# ===== macOS debug symbols =====
+*.dSYM/
+
+# ===== Runtime outputs =====
+.csim_results
+
+# ===== Editor / OS files =====
+.DS_Store
+.vscode/
+.idea/
+
+# ===== Optional: trace files =====
+traces/
