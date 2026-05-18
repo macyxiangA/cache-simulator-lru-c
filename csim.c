@@ -15,7 +15,6 @@
  *     address. Hence, an (M) operation can result in two cache hits,
  *     or a miss and a hit plus a possible eviction.
  *
- * Find the TODO tags to see where to make changes for your simulator.
  */
 
 #include <getopt.h>
@@ -102,6 +101,11 @@ void init_cache()
         if (cache[i] == NULL)
         {
             fprintf(stderr, "malloc failed for cache lines\n");
+            for (int j = 0; j < i; j++)
+            {
+                free(cache[j]);
+            }
+            free(cache);
             exit(1);
         }
 
@@ -333,7 +337,7 @@ int main(int argc, char *argv[])
     }
 
     // Make sure that all required command line args were specified.
-    if (s == 0 || E == 0 || b == 0 || trace_file == NULL)
+    if (s < 0 || E <= 0 || b < 0 || trace_file == NULL)
     {
         printf("%s: Missing required command line argument\n", argv[0]);
         print_usage(argv);
